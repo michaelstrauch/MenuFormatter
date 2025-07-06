@@ -1,4 +1,4 @@
-package com.restaurant.Menu;
+package com.restaurant.Models;
 
 public class MenuModel {
 

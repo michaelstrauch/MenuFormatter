@@ -1,6 +1,5 @@
-package com.restaurant.Menu;
+package com.restaurant.Models;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 

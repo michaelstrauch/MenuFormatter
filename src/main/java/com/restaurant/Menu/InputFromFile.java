@@ -1,9 +1,10 @@
 package com.restaurant.Menu;
 
 import com.restaurant.Exceptions.MenuException;
+import com.restaurant.Models.DailyMenu;
+import com.restaurant.Models.MenuModel;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
@@ -34,14 +35,17 @@ public class InputFromFile {
                     currentMenu = new DailyMenu(currentDay);
                     weeklyMenu.add(currentMenu);
                 } else {
-                    Matcher matcher = pattern.matcher(line);
+                    Matcher matcher;
+                    matcher = pattern.matcher(line);
                     if (matcher.find()) {
                         String number = matcher.group(1);
                         String title = matcher.group(2).trim();
                         String description = matcher.group(3).trim();
                         String price = matcher.group(4);
                         MenuModel menu = new MenuModel(soup, title, description, price, number);
-                        currentMenu.addToDailyMenu(menu);
+                        if (currentMenu != null) {
+                            currentMenu.addToDailyMenu(menu);
+                        }
 
                     }
                 }
