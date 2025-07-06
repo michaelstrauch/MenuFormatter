@@ -2,28 +2,18 @@ package com.restaurant.Menu;
 
 public class MenuModel {
 
-    private String day;
     private String greekSoup;
     private String greekMainCourse;
     private String description;
     private String price;
     private String iD;
 
-    public MenuModel(String day, String greekSoup, String greekMainCourse, String description, String price, String iD) {
-        this.day = day;
+    public MenuModel(String greekSoup, String greekMainCourse, String description, String price, String iD) {
         this.greekSoup = greekSoup;
         this.greekMainCourse = greekMainCourse;
         this.description = description;
         this.price = price;
         this.iD = iD;
-    }
-
-    public String getDay() {
-        return day;
-    }
-
-    public void setDay(String day) {
-        this.day = day;
     }
 
     public String getGreekSoup() {
@@ -68,11 +58,10 @@ public class MenuModel {
 
     @Override
     public String toString() {
-        return day + "\n" +
-                iD + " " +
+        return  iD + " " +
                 greekMainCourse + " + polévka k menu" + "\n" +
                 description + ", " + greekSoup + "\n" +
-                price + "\n";
+                price;
 
     }
 }

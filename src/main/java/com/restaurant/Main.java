@@ -1,12 +1,15 @@
 package com.restaurant;
 
 import com.restaurant.Exceptions.MenuException;
-import com.restaurant.Menu.IO_Formatting;
-import com.restaurant.Menu.MenuModel;
+import com.restaurant.Menu.DailyMenu;
+import com.restaurant.Menu.InputFromFile;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        IO_Formatting menuFormat = new IO_Formatting();
+        InputFromFile menuFormat = new InputFromFile();
+
 
         try {
             menuFormat.readFromFile("E:/Coding/Projects/MenuFormatter/src/main/java/com/restaurant/Files/menu_original.txt");
@@ -14,8 +17,12 @@ public class Main {
             System.err.println("Something wrong");
         }
 
-        for (MenuModel menu : menuFormat.dailyMenu()) {
+        List<DailyMenu> weeklyMenu = menuFormat.getWeeklyMenu();
+
+        for (DailyMenu menu : weeklyMenu ) {
             System.out.println(menu);
-        };
+        }
+
+
     }
 }
