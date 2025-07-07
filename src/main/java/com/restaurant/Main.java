@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
 
         String importFile = "src/main/resources/Files/menu_original.txt";
-        String exportFile = "src/main/resources/Files/menu_formatted.txt";
+        String exportFile = "src/main/resources/Files/menu_rozvozy.txt";
         InputFromFile menuInput = new InputFromFile();
         OutputToFile menuOutput = new OutputToFile();
         List<DailyMenu> weeklyMenu = menuInput.getWeeklyMenu();

@@ -8,12 +8,13 @@ public class MenuModel {
     private String price;
     private String iD;
 
-    public MenuModel(String greekSoup, String greekMainCourse, String description, String price, String iD) {
+    public MenuModel(String greekSoup, String greekMainCourse, String description, String iD) {
         this.greekSoup = greekSoup;
         this.greekMainCourse = greekMainCourse;
         this.description = description;
-        this.price = price;
         this.iD = iD;
+
+
     }
 
     public String getGreekSoup() {
@@ -44,8 +45,14 @@ public class MenuModel {
         return price;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public String setPrice() {
+        switch (getiD()) {
+            case "1." -> price = ("175,-");
+            case "2." -> price = ("185,-");
+            case "3." -> price = ("195,-");
+            case "4." -> price = ("205,-");
+            case "5." -> price = ("215,-");
+        } return price;
     }
 
     public String getiD() {
@@ -61,7 +68,7 @@ public class MenuModel {
         return  iD + " " +
                 greekMainCourse + " + polévka k menu" + "\n" +
                 description + ", " + greekSoup + "\n" +
-                price;
+                setPrice();
 
     }
 }

@@ -2,7 +2,6 @@ package com.restaurant.Menu;
 
 import com.restaurant.Exceptions.MenuException;
 import com.restaurant.Models.DailyMenu;
-
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
