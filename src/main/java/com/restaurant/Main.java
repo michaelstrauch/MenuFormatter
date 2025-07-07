@@ -11,7 +11,9 @@ public class Main {
     public static void main(String[] args) {
 
         String importFile = "src/main/resources/Files/menu_original.txt";
-        String exportFile = "src/main/resources/Files/menu_rozvozy.txt";
+        String exportRozvozFile = "src/main/resources/Files/menu_rozvozy.txt";
+        String exportStoriesFile = "src/main/resources/Files/menu_stories.txt";
+
         InputFromFile menuInput = new InputFromFile();
         OutputToFile menuOutput = new OutputToFile();
         List<DailyMenu> weeklyMenu = menuInput.getWeeklyMenu();
@@ -24,7 +26,13 @@ public class Main {
         }
 
         try {
-            menuOutput.exportToFile(weeklyMenu,exportFile);
+            menuOutput.exportToFile(weeklyMenu, exportRozvozFile);
+        } catch (MenuException e) {
+            System.err.println("Chyba > " + e.getMessage());
+        }
+
+        try {
+            menuOutput.exportToFile(weeklyMenu,exportStoriesFile);
         } catch (MenuException e) {
             System.err.println("Chyba > " + e.getMessage());
         }

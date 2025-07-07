@@ -32,16 +32,21 @@ public class InputFromFile {
                 if (line != null && line.matches("^Pondělí|Úterý|Středa|Čtvrtek|Pátek$")) {
                     currentDay = line;
                     soup = reader.nextLine();
-                    currentMenu = new DailyMenu(currentDay);
+                    Matcher soupMatcher = soupPattern.matcher(soup);
+                    if (soupMatcher.find()) {
+                        String soupName = soupMatcher.group(1);
+                        String soupDesc = soupMatcher.group(2);
+                        currentMenu = new DailyMenu(currentDay,soupName,soupDesc);
+                    }
+//                    currentMenu = new DailyMenu(currentDay);
                     weeklyMenu.add(currentMenu);
                 } else {
-                    Matcher mealMatcher;
-                    mealMatcher = mealPattern.matcher(line);
+                    Matcher mealMatcher = mealPattern.matcher(line);
                     if (mealMatcher.find()) {
                         String number = mealMatcher.group(1);
                         String title = mealMatcher.group(2).trim();
                         String description = mealMatcher.group(3).trim();
-                        MenuModel menu = new MenuModel(soup, title, description, number);
+                        MenuModel menu = new MenuModel(title, description, number);
                         if (currentMenu != null) {
                             currentMenu.addToDailyMenu(menu);
                         }

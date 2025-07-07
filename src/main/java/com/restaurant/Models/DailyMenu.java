@@ -7,9 +7,13 @@ public class DailyMenu {
 
 
     String day;
+    String soupName;
+    String soupDescription;
     List<MenuModel> menu;
 
-    public DailyMenu(String day) {
+    public DailyMenu(String day, String soupName, String soupDescription) {
+        this.soupDescription = soupDescription;
+        this.soupName = soupName;
         this.day = day;
         this.menu = new ArrayList<>();
     }
@@ -34,15 +38,35 @@ public class DailyMenu {
         menu.add(singleMenu);
     }
 
-    @Override
-    public String toString() {
+    public String toRozvozFormat() {
         StringBuilder sb = new StringBuilder();
         sb.append(day).append("\n");
         for (MenuModel meal: menu) {
-            sb.append(meal.toString()).append("\n");
+            sb.append(meal.toRozvozFormat()).append("\n");
         }
         return sb.toString();
     }
+
+    public String toStoriesFormat() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(day).append("\n")
+                .append(soupName).append("\n")
+                .append(soupDescription).append("\n");
+        for (MenuModel meal: menu) {
+            sb.append(meal.toStoriesFormat()).append("\n");
+        }
+        return sb.toString();
+    }
+
+//    @Override
+//    public String toString() {
+//        StringBuilder sb = new StringBuilder();
+//        sb.append(day).append("\n");
+//        for (MenuModel meal: menu) {
+//            sb.append(meal.toString()).append("\n");
+//        }
+//        return sb.toString();
+//    }
 }
 
 

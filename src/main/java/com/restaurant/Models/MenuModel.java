@@ -8,8 +8,8 @@ public class MenuModel {
     private String price;
     private String iD;
 
-    public MenuModel(String greekSoup, String greekMainCourse, String description, String iD) {
-        this.greekSoup = greekSoup;
+    public MenuModel(String greekMainCourse, String description, String iD) {
+//        this.greekSoup = greekSoup;
         this.greekMainCourse = greekMainCourse;
         this.description = description;
         this.iD = iD;
@@ -52,7 +52,8 @@ public class MenuModel {
             case "3." -> price = ("195,-");
             case "4." -> price = ("205,-");
             case "5." -> price = ("215,-");
-        } return price;
+        }
+        return price;
     }
 
     public String getiD() {
@@ -63,12 +64,18 @@ public class MenuModel {
         this.iD = iD;
     }
 
-    @Override
-    public String toString() {
-        return  iD + " " +
-                greekMainCourse + " + polévka k menu" + "\n" +
+
+    public String toRozvozFormat() {
+        return iD + " " + greekMainCourse + " + polévka k menu" + "\n" +
                 description + ", " + greekSoup + "\n" +
                 setPrice();
+    }
+
+    public String toStoriesFormat() {
+        return iD + " " + greekMainCourse + "\n" +
+                description + ", " + greekSoup + "\n" +
+                setPrice();
+
 
     }
 }
