@@ -41,7 +41,7 @@ public class DailyMenu {
     public String toRozvozFormat() {
         StringBuilder sb = new StringBuilder();
         sb.append(day).append("\n");
-        for (MenuModel meal: menu) {
+        for (MenuModel meal : menu) {
             sb.append(meal.toRozvozFormat()).append("\n");
         }
         return sb.toString();
@@ -52,21 +52,11 @@ public class DailyMenu {
         sb.append(day).append("\n")
                 .append(soupName).append("\n")
                 .append(soupDescription).append("\n");
-        for (MenuModel meal: menu) {
+        for (MenuModel meal : menu) {
             sb.append(meal.toStoriesFormat()).append("\n");
         }
         return sb.toString();
     }
-
-//    @Override
-//    public String toString() {
-//        StringBuilder sb = new StringBuilder();
-//        sb.append(day).append("\n");
-//        for (MenuModel meal: menu) {
-//            sb.append(meal.toString()).append("\n");
-//        }
-//        return sb.toString();
-//    }
 }
 
 

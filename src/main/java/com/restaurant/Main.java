@@ -32,7 +32,7 @@ public class Main {
         }
 
         try {
-            menuOutput.exportToFile(weeklyMenu,exportStoriesFile);
+            menuOutput.exportToFile(weeklyMenu, exportStoriesFile);
         } catch (MenuException e) {
             System.err.println("Chyba > " + e.getMessage());
         }

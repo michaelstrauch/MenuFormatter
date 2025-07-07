@@ -3,6 +3,7 @@ package com.restaurant.Menu;
 import com.restaurant.Exceptions.MenuException;
 import com.restaurant.Models.DailyMenu;
 import com.restaurant.Models.MenuModel;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -23,7 +24,7 @@ public class InputFromFile {
     public void readFromFile(String inputFile) throws MenuException {
         Pattern soupPattern = Pattern.compile("^([A-Z ]+)\\s+(.+)");
         Pattern mealPattern = Pattern.compile("^(\\d+\\.)\\s+([A-Z ]+)\\s+(.+)");
-        String soup = "";
+        String soup;
         String currentDay;
         DailyMenu currentMenu = null;
         try (Scanner reader = new Scanner(new BufferedReader(new FileReader(inputFile)))) {
@@ -36,9 +37,8 @@ public class InputFromFile {
                     if (soupMatcher.find()) {
                         String soupName = soupMatcher.group(1);
                         String soupDesc = soupMatcher.group(2);
-                        currentMenu = new DailyMenu(currentDay,soupName,soupDesc);
+                        currentMenu = new DailyMenu(currentDay, soupName, soupDesc);
                     }
-//                    currentMenu = new DailyMenu(currentDay);
                     weeklyMenu.add(currentMenu);
                 } else {
                     Matcher mealMatcher = mealPattern.matcher(line);
