@@ -8,11 +8,11 @@ public class MenuModel {
     private String price;
     private String iD;
 
-    public MenuModel(String greekMainCourse, String description, String iD) {
-//        this.greekSoup = greekSoup;
+    public MenuModel(String greekSoup, String greekMainCourse, String description, String iD) {
         this.greekMainCourse = greekMainCourse;
         this.description = description;
         this.iD = iD;
+        this.greekSoup = greekSoup;
 
 
     }
@@ -72,9 +72,9 @@ public class MenuModel {
     }
 
     public String toStoriesFormat() {
-        return iD + " " + greekMainCourse + "\n" +
-                description + ", " + greekSoup + "\n" +
-                setPrice();
+        return "\n" + iD + " " + greekMainCourse + "\r" +
+                description + "\r" +
+                setPrice() + "\n";
 
 
     }

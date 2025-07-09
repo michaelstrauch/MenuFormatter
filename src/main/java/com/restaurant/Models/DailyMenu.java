@@ -50,7 +50,7 @@ public class DailyMenu {
     public String toStoriesFormat() {
         StringBuilder sb = new StringBuilder();
         sb.append(day).append("\n")
-                .append(soupName).append("\n")
+                .append(soupName).append("\r")
                 .append(soupDescription).append("\n");
         for (MenuModel meal : menu) {
             sb.append(meal.toStoriesFormat()).append("\n");

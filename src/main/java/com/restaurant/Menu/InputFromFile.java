@@ -24,7 +24,7 @@ public class InputFromFile {
     public void readFromFile(String inputFile) throws MenuException {
         Pattern soupPattern = Pattern.compile("^([A-Z ]+)\\s+(.+)");
         Pattern mealPattern = Pattern.compile("^(\\d+\\.)\\s+([A-Z ]+)\\s+(.+)");
-        String soup;
+        String soup = " ";
         String currentDay;
         DailyMenu currentMenu = null;
         try (Scanner reader = new Scanner(new BufferedReader(new FileReader(inputFile)))) {
@@ -46,7 +46,7 @@ public class InputFromFile {
                         String number = mealMatcher.group(1);
                         String title = mealMatcher.group(2).trim();
                         String description = mealMatcher.group(3).trim();
-                        MenuModel menu = new MenuModel(title, description, number);
+                        MenuModel menu = new MenuModel(soup,title, description, number);
                         if (currentMenu != null) {
                             currentMenu.addToDailyMenu(menu);
                         }
