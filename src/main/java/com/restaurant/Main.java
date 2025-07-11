@@ -14,7 +14,8 @@ public class Main {
 
         String importFile = "src/main/resources/Files/menu_original.txt";
         String exportRozvozFile = "src/main/resources/Files/menu_rozvozy.txt";
-        String exportStoriesFile = "src/main/resources/Files/test.docx";
+        String exportStoriesFile = "src/main/resources/Files/menu_stories.docx";
+        String exportWebpageFile = "src/main/resources/Files/menu_web.txt";
 
 
         InputFromFile menuInput = new InputFromFile();
@@ -28,14 +29,20 @@ public class Main {
             System.err.println("Chyba > " + e.getMessage());
         }
 
-//        try {
-//            menuOutput.exportToFile(weeklyMenu, exportRozvozFile);
-//        } catch (MenuException e) {
-//            System.err.println("Chyba > " + e.getMessage());
-//        }
+        try {
+            menuOutput.exportToFile(weeklyMenu, exportRozvozFile);
+        } catch (MenuException e) {
+            System.err.println("Chyba > " + e.getMessage());
+        }
 
         try {
             menuOutput.exportToFile(weeklyMenu, exportStoriesFile);
+        } catch (MenuException e) {
+            System.err.println("Chyba > " + e.getMessage());
+        }
+
+        try {
+            menuOutput.exportToFile(weeklyMenu, exportWebpageFile);
         } catch (MenuException e) {
             System.err.println("Chyba > " + e.getMessage());
         }

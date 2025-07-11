@@ -1,5 +1,6 @@
 package com.restaurant.Models;
 
+import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
@@ -69,31 +70,24 @@ public class MenuModel {
     }
 
 
-    public String toRozvozFormat() {
-        return iD + " " + greekMainCourse + " + polévka k menu" + "\n" +
-                description + ", " + greekSoup + "\n" +
-                setPrice();
+    public String menuToRozvozFormat() {
+        return iD + " " + greekMainCourse + " + polévka k menu" + "\n"
+                  + description + ", " + greekSoup + "\n"
+                  + setPrice();
     }
 
     public void menuToStoriesFormat(XWPFDocument menuDoc) {
         XWPFParagraph par1 = menuDoc.createParagraph();
+        par1.setAlignment(ParagraphAlignment.CENTER);
         XWPFRun r1 = par1.createRun();
         r1.setText(iD + " " + greekMainCourse);
         r1.addBreak();
         r1.setText(description);
         r1.addBreak();
         r1.setText(setPrice());
+    }
 
-
-
-
-
-
-
-//        return  iD + " " + greekMainCourse + "\r" +
-//                description + "\r" +
-//                setPrice();
-
-
+    public String menuToWebpageFormat() {
+        return iD + " " + greekMainCourse + " " + description + " - " + setPrice();
     }
 }

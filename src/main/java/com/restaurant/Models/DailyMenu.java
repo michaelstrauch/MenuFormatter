@@ -1,5 +1,6 @@
 package com.restaurant.Models;
 
+import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
@@ -45,17 +46,19 @@ public class DailyMenu {
         StringBuilder sb = new StringBuilder();
         sb.append(day).append("\n");
         for (MenuModel meal : menu) {
-            sb.append(meal.toRozvozFormat()).append("\n");
+            sb.append(meal.menuToRozvozFormat()).append("\n");
         }
         return sb.toString();
     }
 
     public XWPFDocument toStoriesFormat(XWPFDocument doc) {
         XWPFParagraph par1 = doc.createParagraph();
+        par1.setAlignment(ParagraphAlignment.CENTER);
         XWPFRun r1 = par1.createRun();
         r1.setText(day);
 
         XWPFParagraph par2 = doc.createParagraph();
+        par2.setAlignment(ParagraphAlignment.CENTER);
         XWPFRun r2 = par2.createRun();
         r2.setText(soupName);
         r2.addBreak();
@@ -63,19 +66,21 @@ public class DailyMenu {
 
         XWPFParagraph par3 = doc.createParagraph();
         for (MenuModel meal : menu) {
-           meal.menuToStoriesFormat(doc);
+            meal.menuToStoriesFormat(doc);
         }
         XWPFParagraph par4 = doc.createParagraph();
         return doc;
+    }
 
-//        StringBuilder sb = new StringBuilder();
-//        sb.append(day).append("\n\n")
-//                .append(soupName).append("\r")
-//                .append(soupDescription).append("\n\n");
-//        for (MenuModel meal : menu) {
-//            sb.append(meal.toStoriesFormat()).append("\n");
-//        }
-//        return sb.toString();
+    public String toWebpageFormat() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(day).append("\n");
+        sb.append(soupName).append(" ").append(soupDescription).append("\n");
+        for (MenuModel meal : menu) {
+            sb.append(meal.menuToWebpageFormat()).append("\n");
+
+        }
+        return sb.toString();
     }
 }
 
