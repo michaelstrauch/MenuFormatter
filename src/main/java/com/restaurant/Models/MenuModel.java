@@ -1,5 +1,6 @@
 package com.restaurant.Models;
 
+import com.restaurant.Exceptions.MenuException;
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
@@ -18,8 +19,6 @@ public class MenuModel {
         this.description = description;
         this.iD = iD;
         this.greekSoup = greekSoup;
-
-
     }
 
     public String getGreekSoup() {
@@ -51,7 +50,7 @@ public class MenuModel {
     }
 
     public String setPrice() {
-        switch (getiD()) {
+        switch (getID()) {
             case "1." -> price = ("175,-");
             case "2." -> price = ("185,-");
             case "3." -> price = ("195,-");
@@ -61,11 +60,11 @@ public class MenuModel {
         return price;
     }
 
-    public String getiD() {
+    public String getID() {
         return iD;
     }
 
-    public void setiD(String iD) {
+    public void setID(String iD) {
         this.iD = iD;
     }
 
