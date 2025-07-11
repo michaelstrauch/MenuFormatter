@@ -1,10 +1,13 @@
 package com.restaurant.Models;
 
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class DailyMenu {
-
 
     String day;
     String soupName;
@@ -47,15 +50,32 @@ public class DailyMenu {
         return sb.toString();
     }
 
-    public String toStoriesFormat() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(day).append("\n")
-                .append(soupName).append("\r")
-                .append(soupDescription).append("\n");
+    public XWPFDocument toStoriesFormat(XWPFDocument doc) {
+        XWPFParagraph par1 = doc.createParagraph();
+        XWPFRun r1 = par1.createRun();
+        r1.setText(day);
+
+        XWPFParagraph par2 = doc.createParagraph();
+        XWPFRun r2 = par2.createRun();
+        r2.setText(soupName);
+        r2.addBreak();
+        r2.setText(soupDescription);
+
+        XWPFParagraph par3 = doc.createParagraph();
         for (MenuModel meal : menu) {
-            sb.append(meal.toStoriesFormat()).append("\n");
+           meal.menuToStoriesFormat(doc);
         }
-        return sb.toString();
+        XWPFParagraph par4 = doc.createParagraph();
+        return doc;
+
+//        StringBuilder sb = new StringBuilder();
+//        sb.append(day).append("\n\n")
+//                .append(soupName).append("\r")
+//                .append(soupDescription).append("\n\n");
+//        for (MenuModel meal : menu) {
+//            sb.append(meal.toStoriesFormat()).append("\n");
+//        }
+//        return sb.toString();
     }
 }
 

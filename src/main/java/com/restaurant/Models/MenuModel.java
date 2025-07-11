@@ -1,5 +1,9 @@
 package com.restaurant.Models;
 
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+
 public class MenuModel {
 
     private String greekSoup;
@@ -71,10 +75,24 @@ public class MenuModel {
                 setPrice();
     }
 
-    public String toStoriesFormat() {
-        return "\n" + iD + " " + greekMainCourse + "\r" +
-                description + "\r" +
-                setPrice() + "\n";
+    public void menuToStoriesFormat(XWPFDocument menuDoc) {
+        XWPFParagraph par1 = menuDoc.createParagraph();
+        XWPFRun r1 = par1.createRun();
+        r1.setText(iD + " " + greekMainCourse);
+        r1.addBreak();
+        r1.setText(description);
+        r1.addBreak();
+        r1.setText(setPrice());
+
+
+
+
+
+
+
+//        return  iD + " " + greekMainCourse + "\r" +
+//                description + "\r" +
+//                setPrice();
 
 
     }

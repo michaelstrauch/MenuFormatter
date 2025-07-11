@@ -10,9 +10,12 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
+
+
         String importFile = "src/main/resources/Files/menu_original.txt";
         String exportRozvozFile = "src/main/resources/Files/menu_rozvozy.txt";
-        String exportStoriesFile = "src/main/resources/Files/menu_stories.txt";
+        String exportStoriesFile = "src/main/resources/Files/test.docx";
+
 
         InputFromFile menuInput = new InputFromFile();
         OutputToFile menuOutput = new OutputToFile();
@@ -25,11 +28,11 @@ public class Main {
             System.err.println("Chyba > " + e.getMessage());
         }
 
-        try {
-            menuOutput.exportToFile(weeklyMenu, exportRozvozFile);
-        } catch (MenuException e) {
-            System.err.println("Chyba > " + e.getMessage());
-        }
+//        try {
+//            menuOutput.exportToFile(weeklyMenu, exportRozvozFile);
+//        } catch (MenuException e) {
+//            System.err.println("Chyba > " + e.getMessage());
+//        }
 
         try {
             menuOutput.exportToFile(weeklyMenu, exportStoriesFile);
